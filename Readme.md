@@ -2,6 +2,8 @@
 
 Playground for PowerShell scripts (projects, experiments, & POCs)
 
+**Explore:** [Basics](/Fundamentals/Readme.md) [Regex](/Regex/Readme.md)
+
 ### Environment
 - PowerShell v5.1
 

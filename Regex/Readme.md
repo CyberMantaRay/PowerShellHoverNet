@@ -12,6 +12,6 @@
 ```powershell
 sls -Path <./file.txt> -Pattern "<regex>" | Measure-Object
     # : Count occurences of <regex> (up to one per line)
-sls ... -AllMatches "<regex>" | % {$_.Matches.Value} | measure
+sls "<regex>" <path/file> -AllMatches | % {$_.Matches.Value} | measure
     # : Count ALL <regex> in file using -AllMatches and foreach (%)
 ```
