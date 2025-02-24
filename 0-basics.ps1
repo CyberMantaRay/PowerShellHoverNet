@@ -1,4 +1,6 @@
-syntax
+# Overview of basic Powershell syntax
+
+conditionals
 printDivider
 loops
 printDivider
@@ -8,7 +10,7 @@ hashtables
 
 <# Methods ------------------------------------------------- #>
 
-function syntax {
+function conditionals {
     Write-Host "Starting Conditionals"
     $x=1
     if($x -eq 1) {
