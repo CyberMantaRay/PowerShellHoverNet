@@ -1,11 +1,12 @@
 # PS Fundamentals
-**Related:** [Regex](/0-Regex.md)
+**Related:** [Home](/README.md) [Regex](/0-Regex.md)
 
-## Common Cmdlets
+## Cmdlets
 - `Get-Help <cmd> -ShowWindow` [??] ∙∙∙∙∙∙∙ Get-Command
   - Get-Process (gps) ∙∙∙∙∙∙∙ Get-Service (gsv) ∙∙∙∙∙∙∙ Get-Member (gm)
   - `Get-Alias -Definition <cmd>` (gal)
   - `New-Alias <name> <val>` (nal) ∙∙∙∙∙∙∙ Set-Alias (sal)
+  - `Set-Location Alias:` ∙∙∙∙∙∙∙ Get-Item
 - Write-Output (echo) ∙∙∙∙∙∙∙ Write-Host [print] ∙∙∙∙∙∙∙ Out-File
 - Get-ChildItem (gci/ls) ∙∙∙∙∙∙∙ Get-Content (type)
 - `Where-Object <prop> -eq <val>` (?) ∙∙∙∙∙∙∙ `Select-Object <prop1,prop2>` (select)

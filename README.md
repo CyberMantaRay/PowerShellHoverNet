@@ -2,7 +2,7 @@
 
 Playground for PowerShell scripts (projects, experiments, & POCs)
 
-**Explore:** [Basics](/0-Basics.md) [Regex](/0-Regex.md)
+**Explore:** [Basics](/0-Basics.md) [Regex](/0-Regex.md) [Diagnostics](/1-Diagnostics.md)
 
 ### Environment
 - PowerShell v5.1
