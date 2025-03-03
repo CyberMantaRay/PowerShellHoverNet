@@ -2,7 +2,7 @@
 **Related:** [Regex](/0-Regex.md)
 
 ## Common Cmdlets
-- `Get-Help <cmd> -ShowWindow` [??] ∙∙∙∙∙∙∙ Get-Command
+- `Get-Help <cmd> -ShowWindow` [??] ∙∙∙∙∙∙∙ Get-Command ∙∙∙∙∙∙∙ Get-Item
   - Get-Process (gps) ∙∙∙∙∙∙∙ Get-Service (gsv) ∙∙∙∙∙∙∙ Get-Member (gm)
   - `Get-Alias -Definition <cmd>` (gal)
   - `New-Alias <name> <val>` (nal) ∙∙∙∙∙∙∙ Set-Alias (sal)
