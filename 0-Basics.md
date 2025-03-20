@@ -22,4 +22,5 @@ gps | gm | ? Membertype -eq Method
 gci ~/Downloads | ? {$_.Name -like "*.jpg"}
 gsv | ? StartType -eq Automatic | select Name | Out-String
 gsv | ? {$_.Status -eq 'Running'} | ft Name,StartType,Status
+Get-PSReadLineOption | % HistorySavePath | gi  # Find history file (prev. commands)
 ```
