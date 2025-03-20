@@ -1,8 +1,9 @@
 # Music-Related PowerShell Projects
 
 ## Scripts
-- Fretboard Trainer !IP
-- Ear Training Quiz !TODO
+- Fretboard Trainer !DONE
+- Ear Training Quiz !IP
+- NOTE: Tested using PS v5.1.22621.4391.
 
 ## APIs
 - `[System.Console]::ReadKey($true)`
@@ -16,6 +17,7 @@
 - [Note Frequencies | AuditoryNeuroscience](https://auditoryneuroscience.com/pitch/fundamental-frequencies-notes-western-music)
 - [Western Notes Frequency Chart | Mixbutton](https://mixbutton.com/music-tools/frequency-and-pitch/music-note-to-frequency-chart)
 - [Functions | PoSh Docs](http://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/09-functions?view=powershell-5.1)
+- [Switch Statements](https://learn.microsoft.com/en-us/powershell/scripting/learn/deep-dives/everything-about-switch?view=powershell-5.1)
 
 ## Challenges Encountered
 1. "Exception calling "ReadKey" with "1" argument(s): "Cannot read keys when either application does not have a console or when 

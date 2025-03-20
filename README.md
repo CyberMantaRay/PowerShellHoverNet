@@ -21,6 +21,8 @@ Playground for PowerShell scripts (projects, experiments, & POCs)
 
 ## Resources
 - [🔧 PS Unit Testing Framework | Pester](https://pester.dev/docs/quick-start)
+- [PoSh Cheatsheet | ab14jain](https://github.com/ab14jain/PowerShell)
+- [PoSH Cheatsheet | StationX](https://www.stationx.net/powershell-cheat-sheet/)
 
 ## Other Repos
 - [BashBalanceBeam | CyberMantaRay](https://github.com/CyberMantaRay/BashBalanceBeam)

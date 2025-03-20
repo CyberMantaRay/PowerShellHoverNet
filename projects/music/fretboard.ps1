@@ -74,7 +74,7 @@ $exerciseCount=0
 
 :PROGRAM while ($true) {
     $selection = Get-RandomNote
-    Write-Host "Play ♪ $($selection.Note.Substring(0,1)) on the $($GUITAR_STRINGS_DISPLAY[$selection.GuitarStringIdx]) string $(if ($exerciseCount%8 -eq 0) { "`t([p]lay, Enter/Space -> Next Note)" })"
+    Write-Host "Play ♪ $($selection.Note.Substring(0,1)) on the $($GUITAR_STRINGS_DISPLAY[$selection.GuitarStringIdx]) string $(if ($exerciseCount%12 -eq 0) { "`t`t([p]lay, Enter/Space -> Next Note)" })"
 
     :MENU while ($true) {
         $keyInfo = [System.Console]::ReadKey($true)
