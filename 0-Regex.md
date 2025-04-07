@@ -1,5 +1,5 @@
 # PS Regex
-**Related:** [Basics](/0-Basics.md)
+**Explore:** [Home](/README.md) [Basics](/0-Basics.md)
 
 ## Cmdlets
 - Select-String (sls): `sls <pattern> <path>`
@@ -9,7 +9,7 @@
 - Out-String -Stream
 
 ## Examples
-```powershell
+```pwsh
 $str -Match "<regex>"
 $str | sls "<regex>"
 

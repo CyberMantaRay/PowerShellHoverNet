@@ -3,7 +3,7 @@
 ## Scripts
 - Fretboard Trainer !DONE
 - Ear Training Quiz !IP
-- NOTE: Tested using PS v5.1.22621.4391.
+- NOTE: Developed using PS v5.1.22621.4391.
 
 ## APIs
 - `[System.Console]::ReadKey($true)`
@@ -21,4 +21,7 @@
 
 ## Challenges Encountered
 1. "Exception calling "ReadKey" with "1" argument(s): "Cannot read keys when either application does not have a console or when 
-console input has been redirected from a file. Try Console.Read."           <_Solution - Use PowerShell (Console) for running interactive scripts, i.e. not PowerShell ISE_>
+console input has been redirected from a file. Try Console.Read."
+    - <_Solution: Use PowerShell (Console) for running interactive scripts, i.e. not PowerShell ISE_>
+2. Issues with emoji display in powershell terminal (v5.1.26100.2161) - [UTF-8 Encoding in PowerShell](https://stackoverflow.com/questions/57131654/using-utf-8-encoding-chcp-65001-in-command-prompt-windows-powershell-window)
+    - <_Solution: Upgrade to PowerShell 7+ (pwsh.exe)_> [See POCs. #encoding](/poc/)

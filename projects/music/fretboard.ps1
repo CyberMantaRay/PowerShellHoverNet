@@ -1,7 +1,8 @@
 <#
  # @author Andor Light
  # @github CyberMantaRay
-#>
+ # @pwshv 7.5.0
+ #>
 
 [string[]]$NATURAL_NOTES = @("E2", "F2", "G2", "A2", "B2",
     "C3", "D3", "E3", "F3", "G3", "A3", "B3",
@@ -94,9 +95,7 @@ Write-Host "`nSolid session, see you next time! 🔥`n__________________________
 
 
 <# SAMPLE OUTPUT
-
         Guitar Fretboard Trainer 🎸 (E[x]it)
-
 Play ♪ G on the A string        ([p]lay, Enter/Space -> Next Note)
 Play ♪ A on the High E string   ([p]lay, Enter/Space -> Next Note)
 Play ♪ D on the G string        ([p]lay, Enter/Space -> Next Note)
@@ -107,7 +106,4 @@ Play ♪ B on the B string        ([p]lay, Enter/Space -> Next Note)
 Play ♪ F on the Low E string    ([p]lay, Enter/Space -> Next Note)
 
 Solid session, see you next time! 🔥
-_________________________________
-
-
-#>
+_________________________________#>

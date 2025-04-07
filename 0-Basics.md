@@ -1,26 +1,83 @@
 # PS Fundamentals
-**Related:** [Home](/README.md) [Regex](/0-Regex.md)
+
+**Explore:** [Home](/README.md) [Regex](/0-Regex.md)
 
 ## Cmdlets
-- `Get-Help <cmd> -ShowWindow` [??] ∙∙∙∙∙∙∙ Get-Command
-  - Get-Process (gps) ∙∙∙∙∙∙∙ Get-Service (gsv) ∙∙∙∙∙∙∙ Get-Member (gm)
+- Get-ChildItem (gci/ls) ∙∙∙∙∙∙∙∙∙∙∙ Get-Member (gm)
+- Get-Content (gc/cat/type)
+- `Where-Object <prop> -eq <val>` (?) ∙∙∙∙∙∙∙∙∙∙∙ `Select-Object <prop1,prop2>` (select)
+- Measure-Object (measure) ∙∙∙∙∙∙∙∙∙∙∙ Sort-Object (sort)
+- ForEach-Object (%/foreach)
+- `Get-Help <cmd> -ShowWindow` [??] ∙∙∙∙∙∙∙∙∙∙∙ `Get-Command -Type Cmdlet` (gcm)
   - `Get-Alias -Definition <cmd>` (gal)
-  - `New-Alias <name> <val>` (nal) ∙∙∙∙∙∙∙ Set-Alias (sal)
-  - `Set-Location Alias:` ∙∙∙∙∙∙∙ Get-Item
-- Write-Output (echo) ∙∙∙∙∙∙∙ Write-Host [print] ∙∙∙∙∙∙∙ Out-File
-- Get-ChildItem (gci/ls) ∙∙∙∙∙∙∙ Get-Content (type)
-- `Where-Object <prop> -eq <val>` (?) ∙∙∙∙∙∙∙ `Select-Object <prop1,prop2>` (select)
+  - `New-Alias <name> <val>` (nal) ∙∙∙∙∙∙∙∙∙∙∙ Set-Alias (sal) ∙∙∙∙∙∙∙∙∙∙∙ `Set-Location Alias:`
 - ConvertTo-Json
-- Format-List (fl) ∙∙∙∙∙∙∙ `Format-Table  <prop1,prop2>` (ft)
-- `Out-Host -Paging` (oh) ∙∙∙∙∙∙∙ More
-- Get-Date ∙∙∙∙∙∙∙ Start-Sleep
-- Get-ExecutionPolicy ∙∙∙∙∙∙∙ `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser`
+- `Format-Table  <prop1,prop2>` (ft) ∙∙∙∙∙∙∙∙∙∙∙ Format-List (fl)
+- Out-File ∙∙∙∙∙∙∙∙∙∙∙ Write-Output (echo) ∙∙∙∙∙∙∙∙∙∙∙ Write-Host [print]
+- Start-Sleep
+- More ∙∙∙∙∙∙∙∙∙∙∙ `Out-Host -Paging` (oh)
 
-## Examples ‣
-```powershell
-gps | gm | ? Membertype -eq Method
+#### Examples ‣
+```pwsh
 gci ~/Downloads | ? {$_.Name -like "*.jpg"}
+gci -Recurse -File | % { Write-Host $_.FullName; gc $_.FullName }
+Get-PSReadLineOption | % HistorySavePath | gi                         # Find history file (prev. commands)
+```
+
+
+### Get
+- Get-Item (gi) ∙∙∙∙∙∙∙∙∙∙∙ Set-Item (si)
+- Get-Location (gl/pwd) ∙∙∙∙∙∙∙∙∙∙∙ Get-History (h/ghy/history)
+- Get-Variable (gv) ∙∙∙∙∙∙∙∙∙∙∙ Get-Verb
+- Get-Date ∙∙∙∙∙∙∙∙∙∙∙ Get-ExecutionPolicy
+
+
+### Processes
+- `Get-Process (gps/ps) [-Id]` ∙∙∙∙∙∙∙∙∙∙∙ Stop-Process (kill)
+
+#### Examples ‣
+```pwsh
+gps | gm | ? Membertype -eq Method
+gps | gm | ? {$_.MemberType -cmatch "Method"}
+gps | gm -MemberType property | measure
+```
+
+
+### Services
+- Get-Service (gsv)
+- sc (PS v7) ∙∙∙∙∙∙∙∙∙∙∙ sc.exe (PS v5.1)
+
+#### Examples
+
+```pwsh
 gsv | ? StartType -eq Automatic | select Name | Out-String
 gsv | ? {$_.Status -eq 'Running'} | ft Name,StartType,Status
-Get-PSReadLineOption | % HistorySavePath | gi  # Find history file (prev. commands)
+```
+
+
+### CIM
+- Get-CimInstance ∙∙∙∙∙∙∙∙∙∙∙ Get-WmiObject (gwmi)
+
+```pwsh
+gwmi Win32_Processor
+gwmi Win32_Service | ? {$_.Name -like 'Lego' }
+```
+
+
+### PS Profiles
+```pwsh
+Test-Path $PROFILE
+New-Item -ItemType File -Path $PROFILE -Force    # If ^ false
+notepad $PROFILE
+# nal ?? Get-Help
+Set-ExecutionPolicy RemoteSigned CurrentUser    # Re-open terminal or source w/ `. $PROFILE`
+```
+
+
+### Remoting
+
+```pwsh
+ssh <username>@<ip/host>
+gi WSMan:\localhost\client\TrustedHosts
+si WSMan:\localhost\client\TrustedHosts "Server0,127.0.0.1"    # Unsafe operation; '-Concatenate' appends
 ```
