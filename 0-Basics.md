@@ -2,15 +2,21 @@
 
 **Explore:** [Home](/README.md) [Regex](/0-Regex.md)
 
+
+## File System Navigation
+- Get-Location (pwd/gl) ∙∙∙∙∙∙∙∙∙∙∙ Set-Location (cd/sl)
+- New-Item (ni/mkdir) ∙∙∙∙∙∙∙∙∙∙∙ Get-Content (gc/cat/type)
+- Move-Item (mv/mi/move) ∙∙∙∙∙∙∙∙∙∙∙ Copy-Item (cp/cpi/copy) ∙∙∙∙∙∙∙∙∙∙∙ Remove-Item (rm/ri/del)
+
 ## Cmdlets
 - Get-ChildItem (gci/ls) ∙∙∙∙∙∙∙∙∙∙∙ Get-Member (gm)
-- Get-Content (gc/cat/type)
 - `Where-Object <prop> -eq <val>` (?) ∙∙∙∙∙∙∙∙∙∙∙ `Select-Object <prop1,prop2>` (select)
 - Measure-Object (measure) ∙∙∙∙∙∙∙∙∙∙∙ Sort-Object (sort)
 - ForEach-Object (%/foreach)
 - `Get-Help <cmd> -ShowWindow` [??] ∙∙∙∙∙∙∙∙∙∙∙ `Get-Command -Type Cmdlet` (gcm)
   - `Get-Alias -Definition <cmd>` (gal)
   - `New-Alias <name> <val>` (nal) ∙∙∙∙∙∙∙∙∙∙∙ Set-Alias (sal) ∙∙∙∙∙∙∙∙∙∙∙ `Set-Location Alias:`
+- Compare-Object (diff)
 - ConvertTo-Json
 - `Format-Table  <prop1,prop2>` (ft) ∙∙∙∙∙∙∙∙∙∙∙ Format-List (fl)
 - Out-File ∙∙∙∙∙∙∙∙∙∙∙ Write-Output (echo) ∙∙∙∙∙∙∙∙∙∙∙ Write-Host [print]
@@ -27,7 +33,7 @@ Get-PSReadLineOption | % HistorySavePath | gi                         # Find his
 
 ### Get
 - Get-Item (gi) ∙∙∙∙∙∙∙∙∙∙∙ Set-Item (si)
-- Get-Location (gl/pwd) ∙∙∙∙∙∙∙∙∙∙∙ Get-History (h/ghy/history)
+- Get-History (h/ghy/history)
 - Get-Variable (gv) ∙∙∙∙∙∙∙∙∙∙∙ Get-Verb
 - Get-Date ∙∙∙∙∙∙∙∙∙∙∙ Get-ExecutionPolicy
 
@@ -55,12 +61,16 @@ gsv | ? {$_.Status -eq 'Running'} | ft Name,StartType,Status
 ```
 
 
-### CIM
+### CIM[^1][^2]
 - Get-CimInstance ∙∙∙∙∙∙∙∙∙∙∙ Get-WmiObject (gwmi)
 
 ```pwsh
 gwmi Win32_Processor
 gwmi Win32_Service | ? {$_.Name -like 'Lego' }
+```
+
+```pwsh
+wmic nteventlog list brief
 ```
 
 
@@ -80,4 +90,9 @@ Set-ExecutionPolicy RemoteSigned CurrentUser    # Re-open terminal or source w/ 
 ssh <username>@<ip/host>
 gi WSMan:\localhost\client\TrustedHosts
 si WSMan:\localhost\client\TrustedHosts "Server0,127.0.0.1"    # Unsafe operation; '-Concatenate' appends
+Enter-PSSession <computerName>
 ```
+___
+
+[^1]: CIM - Common Information Model
+[^2]: WMI - Windows Mgmt Instrumentation Command Line
