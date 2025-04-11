@@ -16,7 +16,7 @@ PowerShell Hover Net – A playground for PowerShell scripts (projects, experime
 - systeminfo ∙∙∙∙∙ ipconfig ∙∙∙∙∙ hostname ∙∙∙∙∙ help ∙∙∙∙∙ whoami ∙∙∙∙∙ gdr
 
 ## Variables —
-- $PSVersionTable ∙∙∙∙∙∙∙ $PSHome ∙∙∙∙∙∙∙ $env:PATH ∙∙∙∙∙∙∙ $HOME ∙∙∙∙∙∙∙ $PROFILE
+- $PSVersionTable ∙∙∙∙∙∙∙ $env:PATH ∙∙∙∙∙∙∙ $PSHome ∙∙∙∙∙∙∙ $HOME ∙∙∙∙∙∙∙ $PROFILE
 - `$_` = $PSItem (current obj. in pipeline)
 - *Last command:*  `$?` (exec. status) ∙∙∙∙∙∙∙ `$^` (1st token) ∙∙∙∙∙∙∙ `$$` (last token)
 

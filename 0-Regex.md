@@ -1,6 +1,10 @@
 # PS Regex
 **Explore:** [Home](/README.md) [Basics](/0-Basics.md)
 
+## Commands
+- `findstr /s /i <string1> <string2> *.txt`
+- [findstr | MS Learn](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/findstr)
+
 ## Cmdlets
 - Select-String (sls): `sls <pattern> <path>`
 - Measure-Object (measure)

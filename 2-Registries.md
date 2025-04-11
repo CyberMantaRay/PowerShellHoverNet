@@ -34,8 +34,10 @@ _____
 - SAM
 - SECURITY (accessed by lsass.exe)
 - SOFTWARE
-  - `HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run` (Runs every system reboot)
-  - `HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce` (Runs then deletes val every system reboot)
+  - `HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run` - Runs every system reboot
+  - `HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce` - Runs then deletes val every system reboot
+  - `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList` - users that have accessed machine
+  - `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles` - networks machine has connected to
 - SYSTEM
   - `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR` - connected USB storage dvcs
 
