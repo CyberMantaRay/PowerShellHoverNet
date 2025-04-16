@@ -19,6 +19,7 @@ gci HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion
 gi HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 
 cd Registry::            # Alt. registry nav method via cd; access subkeys/props:   'gci .'  'gi .'
+...Registry::\HKLM\SYSTEM\CurrentControlSet\Services> gci K* | select name      # Find all svcs starting w/ prefix
 ```
 
 #### Command Prompt
@@ -40,6 +41,7 @@ _____
   - `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles` - networks machine has connected to
 - SYSTEM
   - `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR` - connected USB storage dvcs
+  - `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Kdc` - Kerberos
 
 ### HKEY_USERS (HKU)
 - <span title="Security Identifier">SID</span>, e.g. S-1-5-<48 bit number>

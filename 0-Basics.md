@@ -46,6 +46,7 @@ Get-PSReadLineOption | % HistorySavePath | gi                         # Find his
 - Get-Item (gi) ∙∙∙∙∙∙∙∙∙∙∙ Set-Item (si) ∙∙∙∙∙∙∙∙∙∙∙ Get-Acl #permissions
 - Get-History (h/ghy/history)
 - Get-Variable (gv) ∙∙∙∙∙∙∙∙∙∙∙ Get-Verb
+- Get-ScheduledTask
 - Get-Date ∙∙∙∙∙∙∙∙∙∙∙ Get-ExecutionPolicy ∙∙∙∙∙∙∙∙∙∙∙ Get-PSDrive
 
 ```pwsh
@@ -59,16 +60,30 @@ Get-PSReadLineOption | % HistorySavePath | gi                         # Find his
 #### Examples ‣
 ```pwsh
 (Get-Process).Name
+gps services,winit                                  # Exact matches only
+gps | findstr /i service                            # Search for str in process names
+gps | select name,id,path | sort id
+gps | select name,id,path | ? {$_.path -notlike 'C:\Win*'}
+gps chrome | % {$_.Modules} | sort -Desc size
+```
+
+```cmd
+tasklist /svc
+tasklist /fo:table | more      # /fo:{table|list|csv} (formatting types)
+tasklist /fi "IMAGENAME eq lsass.exe"          # Filter for specific process
+tasklist /m                    # /m - displays modules/dll to processes
+tasklist /m /fi "IMAGENAME eq chrome.exe" | more
 ```
 
 
 ## Services
 - Get-Service (gsv)
-- sc (PS v7) ∙∙∙∙∙∙∙∙∙∙∙ sc.exe (PS v5.1)
+- sc (PS v7) ∙∙∙∙∙∙∙∙∙∙∙ sc.exe (PS v5.1) ∙∙∙∙∙∙∙∙∙∙∙ services.msc (gui)
 
 #### Examples
 
 ```pwsh
+gsv | ? {$_.DisplayName -like '*Defender*'}
 gsv | ? StartType -eq Automatic | select Name | Out-String
 gsv | ? {$_.Status -eq 'Running'} | ft Name,StartType,Status
 ```
@@ -80,6 +95,8 @@ gsv | ? {$_.Status -eq 'Running'} | ft Name,StartType,Status
 ```pwsh
 gwmi Win32_Processor
 gwmi Win32_Service | ? {$_.Name -like 'Lego' }
+Get-CimInstance win32_service | select name,processid,pathname | sort processid | ft -wrap
+Get-CimInstance win32_process | select name,processid,parentprocessid,path | sort processid
 ```
 
 ```cmd
@@ -97,8 +114,8 @@ wmic useraccount list brief
 echo "Hisui?" > pkmn-regions.txt
 Set-Content .\pkmn-regions.txt -Value "Jhoto/Kanto" -Stream secret.crystal
 Set-Content .\pkmn-regions.txt -Value "Hoenn" -Stream secret.emerald
-Add-Content -Path .\pkmn-regions.txt -Value 'To protect the world from devastation.' -Stream 'secret.teamrocket'
-Get-Item pkmn-regions.txt -Stream * | FileName, Stream, Length
+Add-Content .\pkmn-regions.txt 'To protect the world from devastation.' -Stream 'secret.teamrocket'
+Get-Item pkmn-regions.txt -Stream * | select fileName,stream,length
 
 Get-Content '.\pkmn-regions.txt:secret.crystal'          # Equiv. to below
 Get-Content pkmn-regions.txt -Stream secret.crystal
@@ -126,10 +143,17 @@ ___
 
 ## Command Prompt
 ```cmd
+netstat -ano | findstr :6666        # (or Get-NetTCPConnection)
+tasklist /fi /m "PID eq XXXX"
+
+net start
+sc query
 set
 dir /ah
-net use
 net user
+
+net use S: \\live.sysinternals.com@80\tools                # vs. 'net use * https://live.sysinternals.com' ?
+net use Z: /delete
 ```
 
 
