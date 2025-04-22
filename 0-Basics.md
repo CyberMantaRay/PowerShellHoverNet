@@ -74,6 +74,7 @@ wmic useraccount list brief
 
 ## Alt. Data Streams
 - Default Stream = :$DATA
+- `dir /r`
 - Get-Item (gi) ∙∙∙∙∙∙∙∙∙∙∙ Set-Content (sc) ∙∙∙∙∙∙∙∙∙∙∙ Add-Content (ac)
 
 ```pwsh
