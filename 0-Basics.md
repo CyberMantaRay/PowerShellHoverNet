@@ -1,6 +1,6 @@
 # PS Fundamentals
 
-**Explore:** [Home](/README.md) [Regex](/0-Regex.md)
+**Explore:** [Home](/README.md) [Regex](/0-Regex.md) [.NET Types](/0-.NetTypes)
 
 
 ## File System Navigation
@@ -18,7 +18,9 @@ gci -File -Recurse | % { Write-Host $_.FullName; gc $_.FullName }
 
 ## Cmdlets
 -  Get-Member (gm) ∙∙∙∙∙∙∙∙∙∙∙ Get-Item (gi)
-- `Where-Object <prop> -eq <val>` (?) ∙∙∙∙∙∙∙∙∙∙∙ `Select-Object <prop1,prop2>` (select)
+- `Select-Object <prop1,prop2>` (select)
+  - Calculated Property @{...}: `select Attr, @{n='ColName';e={calculate($_.prop)}}`
+- `Where-Object <prop> -eq <val>` (?) ∙∙∙∙∙∙∙∙∙∙∙ 
 - Measure-Object (measure) ∙∙∙∙∙∙∙∙∙∙∙ Sort-Object (sort)
 - ForEach-Object (%/foreach)
 - `Get-Help <cmd> -ShowWindow` [??] ∙∙∙∙∙∙∙∙∙∙∙ `Get-Command -Type Cmdlet` (gcm)
@@ -26,13 +28,17 @@ gci -File -Recurse | % { Write-Host $_.FullName; gc $_.FullName }
   - `New-Alias <name> <val>` (nal) ∙∙∙∙∙∙∙∙∙∙∙ Set-Alias (sal) ∙∙∙∙∙∙∙∙∙∙∙ `Set-Location Alias:`
 - Compare-Object (diff)
 - ConvertTo-Json
-- `Format-Table  <prop1,prop2>` (ft) ∙∙∙∙∙∙∙∙∙∙∙ Format-List (fl)
+- `Format-Table  <prop1,prop2>` (ft)
+  - `ft @{label='Username';expression={$_.SamAccountName}; width=25; alignment='left'}` - Abbr. each comp. w/ 1st letter, e.g. w=width
+- Format-List (fl)
 - Out-File ∙∙∙∙∙∙∙∙∙∙∙ Write-Host [print]
 - Start-Sleep
 - More ∙∙∙∙∙∙∙∙∙∙∙ `Out-Host -Paging` (oh)
 
 #### Examples ‣
 ```pwsh
+Get-ADUser -Filter * -Property accountExpires | select Name, @{name='Expiration';expression={[datetime]::FromFileTime($_.accountExpires)}}
+
 Get-LocalUser | select name, sid
 gps | gm | ? Membertype -eq Method
 gps | gm | ? {$_.MemberType -cmatch "Method"}
@@ -53,8 +59,7 @@ Get-PSReadLineOption | % HistorySavePath | gi                         # Find his
 (Get-Acl .\file).Access
 ```
 
-
-### CIM[^1][^2]
+## CIM[^1][^2]
 - Get-CimInstance ∙∙∙∙∙∙∙∙∙∙∙ Get-WmiObject (gwmi)
 - [1-Processes & Services.md](/1-Processes.md)
 
