@@ -67,7 +67,7 @@ Get-ADUser -Filter * -Properties accountExpires, Enabled | ? {
     $_.Enabled -eq $true -and $_.accountExpires -ne 0 -and
     $_.accountExpires -ne 9223372036854775807 -and
     [datetime]::FromFileTime($_.accountExpires) -lt (Get-Date)
-} | Select-Object Name, Enabled, @{n="Expiration";e={[datetime]::FromFileTime($_.accountExpires)}}
+} | select Name, Enabled, @{n="Expiration";e={[datetime]::FromFileTime($_.accountExpires)}}
 
 Get-ADUser -Filter {(emailaddress -notlike "*@teamrocket.org")} -Properties emailaddress
 Get-ADUser -Filter * -Properties EmailAddress | ? {($_.emailaddress -notlike "*@teamrocket.org")} | ft name,emailaddress

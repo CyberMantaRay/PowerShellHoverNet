@@ -7,9 +7,9 @@ systeminfo
 wmic useraccount get name,sid
 ```
 ```pwsh
-Get-ComputerInfo | select osname,osversion,OsHardwareAbstractionLayer
-Get-LocalUser | select Name,SID
+glu | select Name,SID
 gwmi win32_useraccount | select name,sid
+Get-ComputerInfo | select osname,osversion,OsHardwareAbstractionLayer
 ```
 
 ## UserAssist
@@ -19,8 +19,6 @@ gwmi win32_useraccount | select name,sid
 gp "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count"
 # F4E57C4B: Shortcut File Execution
 gp "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{F4E57C4B-2036-45F0-A9AB-443BCFE33D9F}\Count"
-```
-```cmd
 ```
 
 ## BAM - Background Activity Monitor
@@ -85,29 +83,25 @@ strings.exe 'C:\users\<user>\AppData\Local\Google\Chrome\User Data\Default\Top S
 strings.exe  'C:\users\<user>\AppData\Local\Google\Chrome\User Data\Default\Login Data' | findstr -i "https*"       # User Names
 
 # Find FQDNs in Sqlite Text files
-$History = (gc 'C:\Users\*\AppData\Local\Google\Chrome\User Data\Default\History') -replace "[^a-zA-Z0-9\.\:\/]",""
-
+$History = (gc 'C:\Users\*\AppData\Local\Google\Chrome\User Data\Default\History') -replace "[^\w\.\:\/]",""
 $History | sls -Pattern "(https|http):\/\/[a-zA-Z_0-9]+\.\w+[\.]?\w+[\.]?\w+" -AllMatches | % {$_.Matches.Groups[0].Value} | ft
 ```
 
 ## Audit
 ```cmd
 auditpol /get /category:*
-auditpol /get /category:"Object Access"                          # View Subcategory
-auditpol /set /subcategory:"File System"                         # Sets it
-auditpol /set /subcategory:"File System" /success:disable        # Clears It
+auditpol /get /category:"Object Access"                          &:: View Subcategory
+auditpol /set /subcategory:"File System"                         &:: Sets it
+auditpol /set /subcategory:"File System" /success:disable        &:: Clears It
 ```
 
 ## Event Logs
 - **Core:** Application ∙∙∙∙∙∙∙∙∙∙∙ System ∙∙∙∙∙∙∙∙∙∙∙ Security
 - 100+ Windows logs and third-party apps can create their own
 ```cmd   
-#Show all logs
-wevtutil el
-#Get security log info
-wevtutil gli security
-#Get last 3 events from security log and view in human readable format.
-wevtutil qe security /c:3 /f:text    
+wevtutil el                              &:: Show all logs
+wevtutil gli security                    &:: Get security log info
+wevtutil qe security /c:3 /f:text        &:: Get last 3 events from security log
 ```
 
 ```pwsh

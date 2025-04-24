@@ -1,6 +1,6 @@
 # PS Fundamentals
 
-**Explore:** [Home](/README.md) [Regex](/0-Regex.md) [.NET Types](/0-.NetTypes)
+**Explore:** [Home](/README.md) [Regex](/0-Regex.md) [.NET Types](/1-.NetTypes.md)
 
 
 ## File System Navigation
@@ -37,14 +37,15 @@ gci -File -Recurse | % { Write-Host $_.FullName; gc $_.FullName }
 
 #### Examples ‣
 ```pwsh
-Get-ADUser -Filter * -Property accountExpires | select Name, @{name='Expiration';expression={[datetime]::FromFileTime($_.accountExpires)}}
+scp -r C:\Users\<localuser>\SysinternalsSuite <remoteuser>@ip.addr:\Users\Public\Downloads
 
-Get-LocalUser | select name, sid
 gps | gm | ? Membertype -eq Method
 gps | gm | ? {$_.MemberType -cmatch "Method"}
 gps | gm -MemberType property | measure
-Get-FileHash ".\file.txt" -Algo SHA512
+Get-FileHash ".\file.txt" -Algo MD5                 # Def. SHA256
 Get-PSReadLineOption | % HistorySavePath | gi                         # Find history file (prev. commands)
+
+Get-ADUser -Filter * -Property accountExpires | select Name, @{name='Expiration'; expression={[datetime]::FromFileTime($_.accountExpires)}}
 ```
 
 
@@ -106,7 +107,7 @@ Enter-PSSession <computerName>
 Invoke-Command <compName/connUri> <scriptfilepath>
 Invoke-Command -ComputerName File-Server {Get-Service}
 Invoke-Command -ComputerName File-Server,comp-x,... {Get-Service} -asjob
-Receive-Job <job #>
+Receive-Job <job_num>
 ```
 
 ## Tidbits
@@ -115,19 +116,23 @@ ___
 
 ## Command Prompt
 ```cmd
-netstat -ano | findstr :6666        # (or Get-NetTCPConnection)
+type file.txt
+dir /s /b /a:d /o:-d /t:[cwa]        # Abbr. switches, e.g. /a:d = /ad
+netstat -anob | findstr :6666        # (or Get-NetTCPConnection)
 tasklist /fi /m "PID eq XXXX"
 
 net start
 sc query
 set
 dir /ah
+dir /S *searchstr*
 net user
 
 net use S: \\live.sysinternals.com@80\tools                # vs. 'net use * https://live.sysinternals.com' ?
 net use Z: /delete
 ```
 
+- [dir | MSLearn](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/dir)
 
-[^1]: CIM - Common Information Model
-[^2]: WMI - Windows Mgmt Instrumentation Command Line
+[^1]: CIM - Common Information Model (Modern)
+[^2]: WMI - Windows Mgmt Instrumentation (Legacy)

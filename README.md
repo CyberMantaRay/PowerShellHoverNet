@@ -19,7 +19,8 @@ PowerShell Hover Net – A playground for PowerShell scripts (projects, experime
 - $PSVersionTable ∙∙∙∙∙∙∙ $env:PATH ∙∙∙∙∙∙∙ $PSHome ∙∙∙∙∙∙∙ $HOME ∙∙∙∙∙∙∙ $PROFILE
 - `$_` = $PSItem (current obj. in pipeline)
 - *Last command:*  `$?` (exec. status) ∙∙∙∙∙∙∙ `$^` (1st token) ∙∙∙∙∙∙∙ `$$` (last token)
-- $null ∙∙∙∙∙∙∙ $true ∙∙∙∙∙∙∙ $false
+- $NULL ∙∙∙∙∙∙∙ $TRUE ∙∙∙∙∙∙∙ $FALSE
+- $ERROR ∙∙∙∙∙∙∙ $ForEach ∙∙∙∙∙∙∙ $MATCHES ∙∙∙∙∙∙∙ $ARGS
 
 ## Resources —
 - [🔧 PS Unit Testing Framework | Pester](https://pester.dev/docs/quick-start)

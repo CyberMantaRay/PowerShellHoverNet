@@ -12,10 +12,10 @@
 ```pwsh
 Get-Help about_Profiles
 
-Test-Path -Path $profile.currentusercurrenthost
-Test-Path -Path $profile.alluserscurrenthost
-Test-Path -Path $profile.currentuserallhosts
-Test-Path -Path $profile.allusersallhosts
+Test-Path $profile.currentusercurrenthost
+Test-Path $profile.alluserscurrenthost
+Test-Path $profile.currentuserallhosts
+Test-Path $profile.allusersallhosts
 
 
 Test-Path $PROFILE
