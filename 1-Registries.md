@@ -35,15 +35,17 @@ _____
 - SAM
 - SECURITY (accessed by lsass.exe)
 - SYSTEM
-  - `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\USBSTOR` - connected USB storage dvcs
-  - `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Kdc` - Kerberos
+  - `HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\KnownDLLs`
+  - `HKLM\SYSTEM\CurrentControlSet\Enum\USBSTOR` - connected USB storage dvcs
+  - `HKLM\SYSTEM\CurrentControlSet\Services\Kdc` - Kerberos
 - SOFTWARE
   - `HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\`
     - `HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run` - runs every system reboot
     - `HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce` - runs then deletes val every system reboot
-    - `HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System` - User Account Control (UAC) vals
-  - `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList` - users that have accessed machine
-  - `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles` - networks machine has connected to
+    - `HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\System` - User Account Control (UAC)
+      - EnableLUA, ConsentPromptBehaviorAdmin
+  - `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList` - users that have accessed machine
+  - `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Profiles` - networks machine has connected to
 
 ### HKEY_USERS (HKU)
 - <span title="Security Identifier">SID</span>, e.g. S-1-5-<48 bit number>

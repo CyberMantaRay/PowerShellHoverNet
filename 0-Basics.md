@@ -117,6 +117,7 @@ ___
 ## Command Prompt
 ```cmd
 type file.txt
+dir /s /b /o:-d "C:\Users\..."
 dir /s /b /a:d /o:-d /t:[cwa]        # Abbr. switches, e.g. /a:d = /ad
 netstat -anob | findstr :6666        # (or Get-NetTCPConnection)
 tasklist /fi /m "PID eq XXXX"
@@ -130,6 +131,8 @@ net user
 
 net use S: \\live.sysinternals.com@80\tools                # vs. 'net use * https://live.sysinternals.com' ?
 net use Z: /delete
+
+for /R "C:\Users\student\Documents" %f in (*.*) do @echo ==== %f ==== && type "%f"
 ```
 
 - [dir | MSLearn](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/dir)

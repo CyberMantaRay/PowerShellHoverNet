@@ -6,8 +6,8 @@
 | --- | --- |
 | All Users, All Hosts | $PsHome\Profile.ps1 |
 | All Users, Current Host | $PsHome\Microsoft.PowerShell_profile.ps1|
-| Current User, All Hosts | $Home\[My]Documents\Profile.ps1 |
-| Current User, Current Host | $Home\[My ]Documents\WindowsPowerShell\Profile.ps1 |W
+| Current User, All Hosts | $Home\Documents\Profile.ps1 |
+| Current User, Current Host | $Home\Documents\WindowsPowerShell\Profile.ps1 |W
 
 ```pwsh
 Get-Help about_Profiles

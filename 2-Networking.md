@@ -8,3 +8,8 @@
 ```pwsh
 GetNetFirewallProfile | select Name,LogAllowed
 ```
+
+## Locations
+```pwsh
+C:\Windows\System32\drivers\etc\hosts
+```

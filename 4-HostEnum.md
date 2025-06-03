@@ -1,7 +1,5 @@
 # Host Enumeration
-**Explore:** [Home](/README.md) [Basics](/0-Basics.md)
-
-- **\*** requires admin
+**Explore:** [Home](/README.md) [Basics](/0-Basics.md) [HostEnum::Linux](https://github.com/CyberMantaRay/BashBalanceBeam/blob/trunk/4-HostEnum.md)
 
 ## General
 
@@ -21,12 +19,17 @@
 ## Locations
 - Explorer → view → hidden items
   - Check users documents,downloads,desktops
+  - `%AppData%\Microsoft\Windows\Recent`
+    - C:\Users\\\<usr>\AppData\Roaming\Microsoft\Windows\Recent
+    - C:\Users\\\<usr>\Recent   (Alias?)
+  - **Note:** \<usr> as shown in command prompt 
 - `dir C:\Windows\prefetch`* = see executables ran
 - dir /a:h
 - dir /o:d /t:w c:\windows\temp
 - dir /o:d /t:w c:\windows\system32
 - dir /o:d /t:w c:\windows\system32\winevt\logs
-- reg query hklm\software\microsoft\windows\currentversion\run /s   (+ hkcu) and runonce
+- `reg query hklm\software\microsoft\windows\currentversion\run /s` and runonce (+ hkcu)
+- reg query "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\KnownDLLs"
 
 
 ## Process/Services
@@ -41,3 +44,10 @@
 - task sch ( gui )
 - schtasks /query 
 - schtasks /query /fo LIST /v
+
+```cmd
+auditpol /get /category:* | findstr /i "success failure"
+```
+_____
+
+- **\*** requires admin
